@@ -1,16 +1,14 @@
 "use strict";
 
-let express = require("express");
 let webpack = require("webpack");
 let path    = require("path");
 
 webpack({
-    target: "web",
-    entry: path.resolve(__dirname, "test/test.jsx"),
+    entry: path.resolve(__dirname, "src/"),
     output: {
-        path: path.resolve(__dirname, "test/build/"),
-        publicPath: "/",
-        filename: "bundle.js"
+        path: path.resolve(__dirname),
+        filename: "index.js",
+        libraryTarget: "commonjs2"
     },
     module: {
         loaders: [
@@ -32,17 +30,13 @@ webpack({
                 test: /\.(png|svg|jpg|gif)$/,
                 loader: "url-loader?limit=8192",
                 exclude: path.resolve(__dirname, "node_modules")
-            }, {
-                test: /\.json$/,
-                loader: "json",
-                exclude: path.resolve(__dirname, "node_modules")
             }
         ]
     },
     resolve: {
         extensions: ["", ".js", ".jsx"]
     }
-}).watch({ aggregateTimeout: 300 }, (err, stats) => {
+}).run((err, stats) => {
     if (err || stats.hasErrors() || stats.hasWarnings()) {
     	console.log(err);
         console.log(stats.toString({ colors: true }));
@@ -50,14 +44,4 @@ webpack({
     }
 
     console.log("Completed webpack build successfully");
-});
-
-let app = express();
-
-// Serve test content
-app.use("/", express.static(__dirname + "/test"));
-app.use("/", express.static(__dirname + "/test/build"));
-
-let server = app.listen(3000, function() {
-	console.log("Server started on %s:%s", server.address().address, server.address().port);
 });
