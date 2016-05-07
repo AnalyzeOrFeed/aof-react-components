@@ -1,0 +1,9 @@
+@import "../config.scss";
+
+.component-button-image {
+	cursor: pointer;
+	border: 1px solid $white;
+	display: inline-block;
+	padding: 3px 5px 1px;
+	margin: 0 5px;
+}

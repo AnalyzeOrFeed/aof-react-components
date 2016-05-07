@@ -1,0 +1,82 @@
+@import "../config.scss";
+
+$search-modal-height: 300px;
+$search-results-height: 26px;
+
+.component-searchableModal {
+	width: 275px;
+	height: $search-modal-height;
+	overflow: hidden;
+
+	position: absolute;
+	z-index: 4000;
+	pointer-events: none;
+
+	background-color: $white;
+	color: $deep-purple;
+
+	font-size: 10px;
+	letter-spacing: 0.05em;
+
+	opacity: 0;
+	transition: opacity 0.05s;
+
+	&.show { opacity: 1; pointer-events: initial; }
+
+	@include drop-shadow;
+
+	input {
+		width: calc(100% - 16px);
+		font-size: 14px;
+		font-family: inherit;
+		color: inherit;
+		padding: 10px 8px;
+		border: none;
+		border-bottom: 1px solid rgba($deep-purple, 0.25);
+		outline: 0;
+	}
+
+	.results {
+		height: $search-modal-height - 38px;
+		overflow-y: scroll;
+	}
+
+	.resultsEmptyState {
+		width: 100%;
+		margin-top: 25px;
+		text-align: center;
+		color: rgba($deep-purple, 0.5);
+	}
+
+	.result {
+		cursor: pointer;
+		display: block;
+		overflow: hidden;
+		padding: 6px;
+		height: $search-results-height;
+
+		&:hover {
+			background-color: $mid-purple;
+			color: $white;
+		}
+
+		.label {
+
+			width: calc(100% - 48px);
+			font-size: 11px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			display: inline-block;
+			vertical-align: top;
+			height: $search-results-height;
+			line-height: $search-results-height;
+			margin: 0 10px;
+		}
+		img {
+			width: $search-results-height;
+			height: $search-results-height;
+			border-radius: $border-radius;
+		}
+	}
+}

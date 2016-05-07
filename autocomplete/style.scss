@@ -1,0 +1,40 @@
+@import "../config.scss";
+
+.component-autocomplete {
+    display: inline;
+    margin: 0 20px;
+    position: relative;
+    
+	input {
+        padding: 6px 0;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: inherit;
+        color: inherit;
+        border-bottom: 1px solid $white;
+    }
+    
+    .results {
+        position: absolute;
+        left: 0;
+        right: 0;
+        background: $white;
+        color: $deep-purple;
+        z-index: 5;
+        
+        @include drop-shadow();
+    }
+    
+    .result {
+        font-size: 14px;
+        margin: 4px 0;
+        cursor: pointer;
+        opacity: 0.75;
+        padding: 0 5px;
+    }
+    .result:hover, .selected {
+        opacity: 1;
+        font-weight: bolder;
+    }
+}

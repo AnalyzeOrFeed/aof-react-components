@@ -1,0 +1,50 @@
+@import "../config.scss";
+
+.component-modal {
+	position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    background-color: rgba($black, 0.5);
+
+    color: $deep-purple;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 6000;
+    
+    &.visible {
+        opacity: 1;
+        pointer-events: initial;
+    }
+    
+    .close {
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+    
+    .component-button {
+        margin: 10px;
+    }
+    
+    .modal {
+        position: relative;
+        padding: 30px 20px;
+        text-align: center;
+        width: 512px;
+        background-color: $white;
+        
+        @include drop-shadow();
+    }
+}

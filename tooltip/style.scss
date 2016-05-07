@@ -1,0 +1,24 @@
+@import "../config.scss";
+
+.component-tooltip {
+	height: 20px;
+	position: fixed;
+	padding: 5px 10px 0px;
+	z-index: 5000;
+	pointer-events: none;
+	white-space: nowrap;
+
+	background-color: $white;
+	color: $deep-purple;
+
+	text-transform: uppercase;
+	font-size: 10px;
+	letter-spacing: 0.05em;
+
+	@include drop-shadow;
+
+	opacity: 0;
+	transition: opacity 0.05s;
+
+	&.show { opacity: 1; }
+}
