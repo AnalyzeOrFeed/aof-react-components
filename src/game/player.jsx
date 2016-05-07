@@ -8,24 +8,7 @@ const PropTypes = require("./propTypes");
 
 module.exports = React.createClass({
 	propTypes: {
-		player: React.PropTypes.shape({
-			name: React.PropTypes.string.isRequired,
-			teamNr: React.PropTypes.number.isRequired,
-
-			id: React.PropTypes.number,
-			champion: PropTypes.object,
-			league: PropTypes.object,
-			spell1: PropTypes.object,
-			spell2: PropTypes.object,
-			kills: React.PropTypes.number,
-			deaths: React.PropTypes.number,
-			assists: React.PropTypes.number,
-			goldEarned: React.PropTypes.number,
-			minionsKilled: React.PropTypes.number,
-
-			items: React.PropTypes.arrayOf(PropTypes.object),
-			pesId: React.PropTypes.number,
-		}).isRequired
+		player: PropTypes.player.isRequired
 	},
 	render: function() {
 		let goldEarned = this.props.player.goldEarned;

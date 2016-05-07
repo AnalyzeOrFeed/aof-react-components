@@ -6,9 +6,9 @@ let path    = require("path");
 
 webpack({
     target: "web",
-    entry: path.resolve(__dirname, "test/test.jsx"),
+    entry: path.resolve(__dirname, "../test/index.jsx"),
     output: {
-        path: path.resolve(__dirname, "test/build/"),
+        path: path.resolve(__dirname, "../test/build/"),
         publicPath: "/",
         filename: "bundle.js"
     },
@@ -17,25 +17,22 @@ webpack({
             {
                 test: /\.jsx?$/,
                 loader: "babel",
-                exclude: path.resolve(__dirname, "node_modules"),
+                exclude: path.resolve(__dirname, "../node_modules/"),
                 query: {
-                    presets: [
-                        "react",
-                        "es2015"
-                    ]
+                    presets: [ "react", "es2015" ]
                 }
             }, {
                 test: /\.scss$/,
                 loader: "style!css!sass",
-                exclude: path.resolve(__dirname, "node_modules")
+                exclude: path.resolve(__dirname, "../node_modules/"),
             }, {
                 test: /\.(png|svg|jpg|gif)$/,
                 loader: "url-loader?limit=8192",
-                exclude: path.resolve(__dirname, "node_modules")
+                exclude: path.resolve(__dirname, "../node_modules/"),
             }, {
                 test: /\.json$/,
                 loader: "json",
-                exclude: path.resolve(__dirname, "node_modules")
+                exclude: path.resolve(__dirname, "../node_modules/"),
             }
         ]
     },
@@ -55,8 +52,8 @@ webpack({
 let app = express();
 
 // Serve test content
-app.use("/", express.static(__dirname + "/test"));
-app.use("/", express.static(__dirname + "/test/build"));
+app.use("/", express.static(path.resolve(__dirname, "../test")));
+app.use("/", express.static(path.resolve(__dirname, "../test/build")));
 
 let server = app.listen(3000, function() {
 	console.log("Server started on %s:%s", server.address().address, server.address().port);
