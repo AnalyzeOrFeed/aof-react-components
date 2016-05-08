@@ -1,12 +1,11 @@
 {
   "name": "aof-react-components",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "React components used on the aof.gg website and the client.",
   "main": "index.js",
   "scripts": {
     "clean": "node scripts/clean.js",
-    "build": "npm run clean && babel src -d . && npm run copy",
-    "copy": "node scripts/copy.js",
+    "build": "npm run clean && node scripts/build.js",
     "test": "node scripts/test.js"
   },
   "repository": {
@@ -51,7 +50,6 @@
     "react-dom": "15.*"
   },
   "devDependencies": {
-    "babel-cli": "^6.8.0",
     "babel-core": "^6.8.0",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-react-constant-elements": "^6.8.0",
