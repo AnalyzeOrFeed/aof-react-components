@@ -75,6 +75,9 @@ module.exports = React.createClass({
     handleWatch: function() {
     	if (this.props.onWatch) this.props.onWatch(this.props.game);
     },
+    handleLink: function() {
+    	if (this.props.link) window.open(this.props.link, "_blank");
+    },
 	render: function() {
 		let team1 = [];
 		let team2 = [];
