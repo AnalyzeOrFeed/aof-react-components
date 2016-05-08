@@ -8,7 +8,7 @@ const PropTypes = require("./propTypes");
 const Player = require("./player");
 const Conversion = require("./conversion");
 
-moment.locale(navigator.language);
+if (navigator && navigator.language) moment.locale(navigator.language);
 
 module.exports = React.createClass({
 	propTypes: {
