@@ -2,7 +2,6 @@ const React = require("react");
 const cx = require("classnames");
 
 const ObjectImage = require("../object-image");
-const TooltipApi = require("../tooltip/api");
 
 const PropTypes = require("./propTypes");
 

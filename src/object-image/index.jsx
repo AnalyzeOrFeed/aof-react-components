@@ -1,8 +1,8 @@
 const React = require("react");
 const cx = require("classnames");
 
-const TooltipApi = require("../tooltip/api");
-const SearchableApi = require("../searchable-modal/api");
+const TooltipApi = require("../tooltip").api;
+const SearchableApi = require("../searchable-modal").api;
 
 module.exports = React.createClass({
 	propTypes: {

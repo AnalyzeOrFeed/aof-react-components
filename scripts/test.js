@@ -1,8 +1,8 @@
 "use strict";
 
-let express = require("express");
-let webpack = require("webpack");
-let path    = require("path");
+const express = require("express");
+const webpack = require("webpack");
+const path    = require("path");
 
 webpack({
     target: "web",

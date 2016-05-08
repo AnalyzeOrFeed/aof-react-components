@@ -41,3 +41,4 @@ module.exports = React.createClass({
 		</div>
 	},
 });
+module.exports.api = api;
