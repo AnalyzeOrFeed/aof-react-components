@@ -2,6 +2,7 @@ const React  = require("react");
 const moment = require("moment");
 const _      = require("lodash");
 
+const Button = require("../button");
 const ObjectImage = require("../object-image");
 
 const PropTypes = require("./propTypes");
@@ -27,7 +28,8 @@ module.exports = React.createClass({
 			})),
 			conversions: React.PropTypes.arrayOf(PropTypes.conversion),
 		}).isRequired,
-		link: React.PropTypes.element,
+		link: React.PropTypes.string,
+		linkText: React.PropTypes.string,
 		showConversions: React.PropTypes.bool,
 		conversionTimeLeft: React.PropTypes.number,
 		onWatch: React.PropTypes.func,
@@ -170,12 +172,16 @@ module.exports = React.createClass({
 					: null }
 				</div>
 				
-				{ this.props.link }
+				{ this.props.link ? 
+					<Button onClick={ this.handleLink } small={ true }>
+						{ this.props.linkText }
+					</Button>
+				: null }
 
 				{ this.props.onWatch ? 
-					<div className="watch" onClick={ this.handleWatch }>
+					<Button onClick={ this.handleWatch } highlighted={ true }>
 						WATCH
-					</div>
+					</Button>
 				: null }
 			</div>
 

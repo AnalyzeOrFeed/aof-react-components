@@ -117,78 +117,79 @@ const App = React.createClass({
 	},
 	render: function() {
 		let divStyle = {
-			display: "inline-block",
 			marginRight: "50px",
-			minHeight: "200px",
 		};
 
-		return <div style={{ padding: "0 20px 20px 20px" }}>
+		return <div style={{ padding: "2em" }}>
 			<h1>Analyze Or Feed Common React Components Test</h1>
 
-			<div style={ divStyle }>
-				<h2>Autocomplete</h2>
-				<AutoComplete
-					getResults={ this.getResults }
-				/>
-			</div>
+			<div style={{ display: "flex", flexWrap: "wrap" }}>
+				<div style={ divStyle }>
+					<h2>Autocomplete</h2>
+					<AutoComplete
+						getResults={ this.getResults }
+					/>
+				</div>
 
-			<div style={ divStyle }>
-				<h2>Button</h2>
-				<Button
-					label="Test button"
-				/>
-				<Button
-					label="Small test button"
-					small={ true }
-				/>
-			</div>
+				<div style={ divStyle }>
+					<h2>Button</h2>
+					<div style={{ display: "flex", alignItems: "center" }}>
+						<Button>Test button</Button>
+						<Button small={ true } highlighted={ true }>
+							Small highlighted<br />test button
+						</Button>
+					</div>
+				</div>
 
-			<div style={ divStyle }>
-				<h2>Button Image</h2>
-				<ButtonImage
-					src="https://aof.gg/4b72f889bed9164cccf5b7b3cd7c12de.svg"
-					height={ 50 }
-					width={ 50 }
-				/>
-			</div>
+				<div style={ divStyle }>
+					<h2>Button Image</h2>
+					<ButtonImage
+						src="https://aof.gg/4b72f889bed9164cccf5b7b3cd7c12de.svg"
+						height={ 50 }
+						width={ 50 }
+					/>
+				</div>
 
-			<div style={ divStyle }>
-				<h2>Modal</h2>
-				<Button label="Show modal" onClick={ () => this.setState({ showModal: true }) } />
-				<Modal show={ this.state.showModal } onClose={ this.handleClose }>
-					Hi, this is a friendly test modal!
-				</Modal>
-			</div>
+				<div style={ divStyle }>
+					<h2>Modal</h2>
+					<Button onClick={ () => this.setState({ showModal: true }) }>
+						Modal
+					</Button>
+					<Modal show={ this.state.showModal } onClose={ this.handleClose }>
+						Hi, this is a friendly test modal!
+					</Modal>
+				</div>
 
-			<div style={ divStyle }>
-				<h2>Object Image</h2>
-				<ObjectImage
-					dataset={ champions }
-					default="Champion"
-					displayBy="name"
-					imageBy="image"
-				/>
-				<div style={{ display: "inline-block", width: "20px" }}></div>
-				<ObjectImage
-					data={ champions[0] }
-					round={ true }
-					default="Champion"
-					displayBy="name"
-					imageBy="image"
-				/>
-			</div>
+				<div style={ divStyle }>
+					<h2>Object Image</h2>
+					<ObjectImage
+						dataset={ champions }
+						default="Champion"
+						displayBy="name"
+						imageBy="image"
+					/>
+					<div style={{ display: "inline-block", width: "20px" }}></div>
+					<ObjectImage
+						data={ champions[0] }
+						round={ true }
+						default="Champion"
+						displayBy="name"
+						imageBy="image"
+					/>
+				</div>
 
-			<div style={ divStyle }>
-				<h2>Game</h2>
-				<Game
-					game={ game }
-					showConversions={ true }
-					conversionTimeLeft={ 1232 }
-					onWatch={ this.handleWatch }
-				/>
+				<div style={ divStyle }>
+					<h2>Game</h2>
+					<Game
+						game={ game }
+						showConversions={ true }
+						conversionTimeLeft={ 1232 }
+						onWatch={ this.handleWatch }
+						link="https://aof.gg"
+						linkText="External"
+					/>
+				</div>
 			</div>
-
-			<div style={{ clear: "both" }} />
 
 			<Tooltip />
 

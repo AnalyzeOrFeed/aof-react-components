@@ -2,9 +2,7 @@ const React = require("react");
 const cx = require("classnames");
 
 module.exports = React.createClass({
-	propTypes: {
-		label: React.PropTypes.string.isRequired,
-		
+	propTypes: {		
 		highlighted: React.PropTypes.bool,
 		small: React.PropTypes.bool,
 		disabled: React.PropTypes.bool
@@ -15,7 +13,7 @@ module.exports = React.createClass({
 	render: function() {
 		let className = cx("component-button", { highlighted: this.props.highlighted, small: this.props.small, disabled: this.props.disabled });
 		return <div className={ className } onClick={ this.props.onClick }>
-			{ this.props.label }
+			{ this.props.children }
 		</div>;
 	}
 });

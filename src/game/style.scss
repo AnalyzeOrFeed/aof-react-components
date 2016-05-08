@@ -4,8 +4,6 @@
 	display: flex;
 	flex-direction: column;
 
-	width: 1021px;
-
 	.header {
 		display: flex;
 		flex-wrap: wrap;
@@ -18,7 +16,6 @@
 		}
 
 		.info {
-			self-align: flex-end;
 			display: flex;
 			flex-wrap: wrap;
 
@@ -42,13 +39,8 @@
 			}
 		}
 
-		.watch {
-			font-size: 1.1em;
-			background-color: $pink;
-			color: $white;
-			padding: 0.2em 0.5em;
-			cursor: pointer;
-			text-decoration: none;
+		.component-button {
+			margin-left: 1em;
 		}
 	}
 
