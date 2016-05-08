@@ -27,6 +27,11 @@ module.exports = React.createClass({
     componentWillMount: function() {
         require("./style.scss");
     },
+    componentWillReceiveProps: function(nextProps) {
+    	this.setState({
+    		data: nextProps.data
+    	});
+    },
     getInitialState: function() {
     	return {
     		data: this.props.data,

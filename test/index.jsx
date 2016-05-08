@@ -71,18 +71,15 @@ let leagues = [{
 }];
 
 let game = require("./data/game.json");
-game.players = _.map(game.players, player => {
+_.each(game.players, player => {
 	player.champion = _.find(champions, { "id": player.championId });
 	player.spell1 = _.find(spells, { id: player.spell1 });
 	player.spell2 = _.find(spells, { id: player.spell2 });
-	player.items = _.map(player.items, id => _.find(items, { "id": id }));
 	player.league = _.find(leagues, { id: player.leagueId });
-	return player;
+	player.items2 = _.map(player.items, id => _.find(items, { "id": id }));
+	delete player.items;
 });
-game.bans = _.map(game.bans, ban => {
-	ban.champion = _.find(champions, { id: ban.championId });
-	return ban;
-});
+_.each(game.bans, ban => ban.champion = _.find(champions, { id: ban.championId }));
 game.hasEndgameStats = true;
 game.region = "JP";
 game.type = "Ranked";
@@ -95,6 +92,13 @@ _.each(game.conversions, (conv) => {
 const App = React.createClass({
 	componentWillMount: function() {
 		require("./base.scss");
+	},
+	componentDidMount: function() {
+		setTimeout(() => {
+			console.log("Fake async loading items");
+			_.each(game.players, player => player.items = player.items2);
+			this.refs.game.forceUpdate();
+		}, 3000);
 	},
 	getInitialState: function() {
 		return {
@@ -181,6 +185,7 @@ const App = React.createClass({
 				<div style={ divStyle }>
 					<h2>Game</h2>
 					<Game
+						ref="game"
 						game={ game }
 						showConversions={ true }
 						conversionTimeLeft={ 1232 }
