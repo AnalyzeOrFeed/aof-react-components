@@ -15,6 +15,7 @@ const modules = {
     "modal": path.resolve(__dirname, "../src/modal/"),
     "object-image": path.resolve(__dirname, "../src/object-image/"),
     "searchable-modal": path.resolve(__dirname, "../src/searchable-modal/"),
+    "spinner": path.resolve(__dirname, "../src/spinner/"),
     "tooltip": path.resolve(__dirname, "../src/tooltip/"),
 };
 

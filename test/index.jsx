@@ -3,14 +3,15 @@ const ReactDOM = require("react-dom");
 const _        = require("lodash");
 const request  = require("superagent");
 
-const AutoComplete = require("../src/autocomplete");
-const Button       = require("../src/button");
-const ButtonImage  = require("../src/button-image");
-const Game         = require("../src/game");
-const Modal        = require("../src/modal");
-const ObjectImage  = require("../src/object-image");
-const Tooltip      = require("../src/tooltip");
+const AutoComplete    = require("../src/autocomplete");
+const Button          = require("../src/button");
+const ButtonImage     = require("../src/button-image");
+const Game            = require("../src/game");
+const Modal           = require("../src/modal");
+const ObjectImage     = require("../src/object-image");
 const SearchableModal = require("../src/searchable-modal");
+const Spinner         = require("../src/spinner");
+const Tooltip         = require("../src/tooltip");
 
 const baseUrl = "https://ddragon.leagueoflegends.com/cdn/6.9.1/img/";
 let champions = [];
@@ -180,6 +181,11 @@ const App = React.createClass({
 						displayBy="name"
 						imageBy="image"
 					/>
+				</div>
+
+				<div style={ divStyle }>
+					<h2>Spinner</h2>
+					<Spinner />
 				</div>
 
 				<div style={ divStyle }>

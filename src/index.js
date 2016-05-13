@@ -6,5 +6,6 @@ module.exports = {
 	Modal: require("./modal"),
 	ObjectImage: require("./object-image"),
 	SearchableModal: require("./searchable-modal"),
+	Spinner: require("./spinner"),
 	Tooltip: require("./tooltip"),
 };
