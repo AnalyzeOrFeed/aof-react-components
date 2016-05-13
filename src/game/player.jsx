@@ -58,16 +58,16 @@ module.exports = React.createClass({
 				</div>
 				<div className="stats">
 					<div>
-						{ this.props.player.goldEarned >= 0 ? [
+						{ Number.isFinite(this.props.player.goldEarned) ? [
 							<img src={ require("./assets/coins.png") } key="image" />,
-							<span key="text">{goldEarned}</span>
+							<span key="text">{ goldEarned }</span>
 						] : null }
 					</div> 
 					
 					<div>
-						{ this.props.player.minionsKilled >= 0 ? [
+						{ Number.isFinite(this.props.player.minionsKilled) ? [
 							<img src={ require("./assets/minions.png") } key="image" />,
-							<span key="text">{this.props.player.minionsKilled}</span>
+							<span key="text">{ this.props.player.minionsKilled }</span>
 						] : null }
 					</div>
 				</div>
@@ -88,7 +88,7 @@ module.exports = React.createClass({
 			<div className="itemBlock">
 				<div className="kda">
 					<div>
-						{ this.props.player.kills >= 0 ? 
+						{ Number.isFinite(this.props.player.kills) ? 
 							<span>{ this.props.player.kills } / { this.props.player.deaths } / { this.props.player.assists }</span>
 						:
 							<span>?</span>

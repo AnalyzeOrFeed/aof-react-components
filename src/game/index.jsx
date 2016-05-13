@@ -233,7 +233,7 @@ module.exports = React.createClass({
 
 						<div className="score">
 							<div className="tiny">TOTAL</div>
-							{ team1Kills >= 0 ? 
+							{ Number.isFinite(team1Kills) ? 
 								<div>{ team1Kills } / { team1Deaths } / { team1Assists }</div>
 							:
 								<div>?</div>
@@ -262,7 +262,7 @@ module.exports = React.createClass({
 
 						<div className="score">
 							<div className="tiny">TOTAL</div>
-							{ team2Kills >= 0 ? 
+							{ Number.isFinite(team2Kills) ? 
 								<div>{ team2Kills } / { team2Deaths } / { team2Assists }</div>
 							:
 								<div>?</div>
