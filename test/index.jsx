@@ -9,9 +9,13 @@ const ButtonImage     = require("../src/button-image");
 const Game            = require("../src/game");
 const Modal           = require("../src/modal");
 const ObjectImage     = require("../src/object-image");
+const RegionSelect    = require("../src/region-select");
 const SearchableModal = require("../src/searchable-modal");
 const Spinner         = require("../src/spinner");
 const Tooltip         = require("../src/tooltip");
+
+let regions = require("./data/regions.json");
+let leagues = require("./data/leagues.json");
 
 const baseUrl = "https://ddragon.leagueoflegends.com/cdn/6.9.1/img/";
 let champions = [];
@@ -41,36 +45,6 @@ _.each(require("./data/items.json"), (value, key) => {
 	});
 });
 
-let leagues = [{
-	id: 2,
-	name: "Bronze",
-	image: "https://aof.gg/bronze.png"
-},{
-	id: 3,
-	name: "Silver",
-	image: "https://aof.gg/silver.png"
-},{
-	id: 4,
-	name: "Gold",
-	image: "https://aof.gg/gold.png"
-},{
-	id: 5,
-	name: "Platinum",
-	image: "https://aof.gg/platinum.png"
-},{
-	id: 6,
-	name: "Diamond",
-	image: "https://aof.gg/diamond.png"
-},{
-	id: 7,
-	name: "Master",
-	image: "https://aof.gg/master.png"
-},{
-	id: 8,
-	name: "Challenger",
-	image: "https://aof.gg/challenger.png"
-}];
-
 let game = require("./data/game.json");
 _.each(game.players, player => {
 	player.champion = _.find(champions, { "id": player.championId });
@@ -96,7 +70,7 @@ const App = React.createClass({
 	},
 	componentDidMount: function() {
 		setTimeout(() => {
-			console.log("Fake async loading items");
+			console.log("Fake async loading items done");
 			_.each(game.players, player => player.items = player.items2);
 			this.refs.game.forceUpdate();
 		}, 3000);
@@ -131,9 +105,12 @@ const App = React.createClass({
 			<div style={{ display: "flex", flexWrap: "wrap" }}>
 				<div style={ divStyle }>
 					<h2>Autocomplete</h2>
+					<div style={{ display: "flex" }}>
+					<RegionSelect regions={ regions } valueBy="id" displayBy="shortName" value={ regions[4].id } />
 					<AutoComplete
 						getResults={ this.getResults }
 					/>
+					</div>
 				</div>
 
 				<div style={ divStyle }>
@@ -163,6 +140,16 @@ const App = React.createClass({
 					<Modal show={ this.state.showModal } onClose={ this.handleClose }>
 						Hi, this is a friendly test modal!
 					</Modal>
+				</div>
+
+				<div style={ divStyle }>
+					<h2>Region select</h2>
+					<RegionSelect
+						regions={ regions }
+						valueBy="id"
+						displayBy="shortName"
+						value={ regions[4].id }
+					/>
 				</div>
 
 				<div style={ divStyle }>

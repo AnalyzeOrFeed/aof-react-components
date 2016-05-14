@@ -1,0 +1,29 @@
+[{
+	"id": 2,
+	"name": "Bronze",
+	"image": "https://aof.gg/bronze.png"
+},{
+	"id": 3,
+	"name": "Silver",
+	"image": "https://aof.gg/silver.png"
+},{
+	"id": 4,
+	"name": "Gold",
+	"image": "https://aof.gg/gold.png"
+},{
+	"id": 5,
+	"name": "Platinum",
+	"image": "https://aof.gg/platinum.png"
+},{
+	"id": 6,
+	"name": "Diamond",
+	"image": "https://aof.gg/diamond.png"
+},{
+	"id": 7,
+	"name": "Master",
+	"image": "https://aof.gg/master.png"
+},{
+	"id": 8,
+	"name": "Challenger",
+	"image": "https://aof.gg/challenger.png"
+}]

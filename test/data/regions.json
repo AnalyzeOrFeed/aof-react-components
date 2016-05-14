@@ -1,0 +1,73 @@
+[{
+	"id": 1,
+	"name": "Europe West",
+	"shortName": "EUW",
+	"spectatorUrl": "http://spectator.euw1.lol.riotgames.com/",
+	"spectatorRegion": "EUW1"
+}, {
+	"id": 2,
+	"name": "Europe Nordic & East",
+	"shortName": "EUNE",
+	"spectatorUrl": "http://spectator.eu.lol.riotgames.com:8088/",
+	"spectatorRegion": "EUN1"
+}, {
+	"id": 3,
+	"name": "North America",
+	"shortName": "NA",
+	"spectatorUrl": "http://spectator.na.lol.riotgames.com/",
+	"spectatorRegion": "NA1"
+}, {
+	"id": 4,
+	"name": "Latin America North",
+	"shortName": "LAN",
+	"spectatorUrl": "http://spectator.la1.lol.riotgames.com/",
+	"spectatorRegion": "LA1"
+}, {
+	"id": 5,
+	"name": "Brazil",
+	"shortName": "BR",
+	"spectatorUrl": "http://spectator.br.lol.riotgames.com/",
+	"spectatorRegion": "BR1"
+}, {
+	"id": 6,
+	"name": "Korea",
+	"shortName": "KR",
+	"spectatorUrl": "http://spectator.kr.lol.riotgames.com/",
+	"spectatorRegion": "KR"
+}, {
+	"id": 7,
+	"name": "Oceania",
+	"shortName": "OCE",
+	"spectatorUrl": "http://spectator.oc1.lol.riotgames.com/",
+	"spectatorRegion": "OC1"
+}, {
+	"id": 8,
+	"name": "Latin America South",
+	"shortName": "LAS",
+	"spectatorUrl": "http://spectator.la2.lol.riotgames.com/",
+	"spectatorRegion": "LA2"
+}, {
+	"id": 9,
+	"name": "Russia",
+	"shortName": "RU",
+	"spectatorUrl": "http://spectator.ru.lol.riotgames.com/",
+	"spectatorRegion": "RU"
+}, {
+	"id": 10,
+	"name": "Turkey",
+	"shortName": "TR",
+	"spectatorUrl": "http://spectator.tr.lol.riotgames.com/",
+	"spectatorRegion": "TR1"
+}, {
+	"id": 11,
+	"name": "Public Beta Environment",
+	"shortName": "PBE",
+	"spectatorUrl": "http://spectator.pbe1.lol.riotgames.com:8080/",
+	"spectatorRegion": "PBE1"
+}, {
+	"id": 12,
+	"name": "Japan",
+	"shortName": "JP",
+	"spectatorUrl": "http://spectator.jp1.lol.riotgames.com/",
+	"spectatorRegion": "JP1"
+}]
