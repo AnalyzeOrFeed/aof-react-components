@@ -5,6 +5,7 @@ module.exports = {
 	Game: require("./game"),
 	Modal: require("./modal"),
 	ObjectImage: require("./object-image"),
+	RegionSelect: require("./region-select"),
 	SearchableModal: require("./searchable-modal"),
 	Spinner: require("./spinner"),
 	Tooltip: require("./tooltip"),

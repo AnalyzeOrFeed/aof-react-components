@@ -14,6 +14,7 @@ const modules = {
     "game": path.resolve(__dirname, "../src/game/"),
     "modal": path.resolve(__dirname, "../src/modal/"),
     "object-image": path.resolve(__dirname, "../src/object-image/"),
+    "region-select": path.resolve(__dirname, "../src/region-select"),
     "searchable-modal": path.resolve(__dirname, "../src/searchable-modal/"),
     "spinner": path.resolve(__dirname, "../src/spinner/"),
     "tooltip": path.resolve(__dirname, "../src/tooltip/"),

@@ -1,0 +1,20 @@
+@import "../config.scss";
+
+.compontent-region-select {
+	display: inline-block;
+	border-bottom: 1px solid $white;
+
+	select {
+		border: none;
+		color: $white;
+		width: 100%;
+		padding: 0.4em 2em 0.4em 0.4em;
+		font-size: 1em;
+		outline: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		background: $deep-purple url(./assets/arrow-down.svg) no-repeat calc(100% - 0.5em) 50%;
+		background-size: auto 50%;
+	}
+}
