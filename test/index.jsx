@@ -105,12 +105,10 @@ const App = React.createClass({
 			<div style={{ display: "flex", flexWrap: "wrap" }}>
 				<div style={ divStyle }>
 					<h2>Autocomplete</h2>
-					<div style={{ display: "flex" }}>
-					<RegionSelect regions={ regions } valueBy="id" displayBy="shortName" value={ regions[4].id } />
 					<AutoComplete
 						getResults={ this.getResults }
+						placeholder="Summoner"
 					/>
-					</div>
 				</div>
 
 				<div style={ divStyle }>
@@ -138,7 +136,17 @@ const App = React.createClass({
 						Modal
 					</Button>
 					<Modal show={ this.state.showModal } onClose={ this.handleClose }>
-						Hi, this is a friendly test modal!
+						<h1>Hi, this is a friendly test modal!</h1>
+						<RegionSelect
+							regions={ regions }
+							valueBy="id"
+							displayBy="shortName"
+							value={ regions[4].id }
+						/>&nbsp;
+						<AutoComplete
+							getResults={ this.getResults }
+							placeholder="Summoner"
+						/>
 					</Modal>
 				</div>
 
