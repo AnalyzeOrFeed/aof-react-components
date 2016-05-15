@@ -19,7 +19,7 @@ module.exports = React.createClass({
     },
     handleChange: function(event) {
         this.setState({ value: event.target.value });
-        if (this.props.onChange) this.props.onChange(event.target.value);
+        if (this.props.onChange) this.props.onChange(event);
     },
 	render: function() {
 		return <div className="compontent-region-select">
