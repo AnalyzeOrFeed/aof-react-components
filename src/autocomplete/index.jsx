@@ -83,7 +83,7 @@ module.exports = React.createClass({
                     { this.state.results.map((result, index) => {
                         let className = cx("result", { selected: index == this.state.selected });
                         return <div key={ index } className={ className } onClick={ (event) => this.setValue(event, result) }>
-                            <pre>{result}</pre>
+                            <pre>{ result }</pre>
                         </div>;
                     }) }
                 </div>

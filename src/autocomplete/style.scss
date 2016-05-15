@@ -18,19 +18,23 @@
         position: absolute;
         left: 0;
         right: 0;
-        background: $white;
-        color: $deep-purple;
+        background: $deep-purple;
+        color: $white;
         z-index: 5;
+        padding: 0.2em 0.3em;
+        border: 1px solid $white;
         
         @include drop-shadow();
     }
     
     .result {
-        font-size: 0.8em;
-        margin: 4px 0;
+        font-size: 1em;
         cursor: pointer;
         opacity: 0.75;
-        padding: 0 5px;
+
+        pre {
+            margin: 0.1em;
+        }
     }
     .result:hover, .selected {
         opacity: 1;
