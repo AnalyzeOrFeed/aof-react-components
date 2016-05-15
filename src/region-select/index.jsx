@@ -6,6 +6,7 @@ module.exports = React.createClass({
         valueBy: React.PropTypes.string.isRequired,
         displayBy: React.PropTypes.string.isRequired,
         value: React.PropTypes.any,
+        name: React.PropTypes.string,
         onChange: React.PropTypes.func,
     },
     componentWillMount: function() {
@@ -22,7 +23,7 @@ module.exports = React.createClass({
     },
 	render: function() {
 		return <div className="compontent-region-select">
-            <select ref="select" onChange={ this.handleChange } value={ this.state.value }>
+            <select ref="select" name={ this.props.name } onChange={ this.handleChange } value={ this.state.value }>
                 { this.props.regions.map((region, index) => {
                     let value = region[this.props.valueBy];
                     if (typeof value == "function") value = value.bind(region)();
