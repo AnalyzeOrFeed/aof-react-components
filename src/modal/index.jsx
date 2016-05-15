@@ -2,6 +2,7 @@ var React = require("react");
 var cx = require("classnames");
 
 module.exports = React.createClass({
+    prevent: false,
     propTypes: {
         show: React.PropTypes.bool.isRequired,
         onClose: React.PropTypes.func.isRequired,
@@ -9,12 +10,15 @@ module.exports = React.createClass({
     componentWillMount: function() {
         require("./style.scss");
     },
-    close: function(event) {
-        if (event.defaultPrevented) return;
+    close: function() {
+        if (this.prevent) {
+            this.prevent = false;
+            return;
+        }
         this.props.onClose();
     },
     stopClose: function(event) {
-        event.preventDefault();
+       this.prevent = true;
     },
     render: function() {
         return <div className={ cx("component-modal", { visible: this.props.show }) } onClick={ this.close }>
