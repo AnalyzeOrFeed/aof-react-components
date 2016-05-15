@@ -2,12 +2,14 @@ const React = require("react");
 const cx = require("classnames");
 
 module.exports = React.createClass({
+    prevent: false,
     propTypes: {
         getResults: React.PropTypes.func.isRequired,
 
         onChange: React.PropTypes.func,
         onEnter: React.PropTypes.func,
         value: React.PropTypes.string,
+        name: React.PropTypes.string,
         placeholder: React.PropTypes.string,
     },
     componentWillMount: function() {
@@ -26,22 +28,28 @@ module.exports = React.createClass({
             selected: -1,
         };
     },
-    setValue: function(event, value) {
+    setValue: function(value) {
         if (this.props.onChange) this.props.onChange(value);
         this.setState({
             results: [],
             searchTerm: value,
             selected: -1,
         });
-        event.preventDefault();
+        this.prevent = true;
     },
     handleClick: function(event) {
-        if (event.defaultPrevented) return;
+        if (this.prevent) {
+            this.prevent = false;
+            return;
+        }
         this.props.getResults(this.state.searchTerm, (results) => this.setState({ results: results }));
-        event.preventDefault();
+        this.prevent = true;
     },
     handleOutsideClick: function(event) {
-        if (event.defaultPrevented) return;
+        if (this.prevent) {
+            this.prevent = false;
+            return;
+        }
         this.setState({ results: [] });
     },
     handleUpdate: function(event) {
@@ -75,14 +83,14 @@ module.exports = React.createClass({
     },
 	render: function() {
 		return <div className="component-autocomplete" onClick={ this.handleClick }>
-			<input type="text" value={ this.state.searchTerm } onChange={ this.handleUpdate } onKeyDown={ this.handleKeyPress }
-                placeholder={ this.props.placeholder } />
+			<input type="text" name={ this.props.name } value={ this.state.searchTerm } onChange={ this.handleUpdate } 
+                onKeyDown={ this.handleKeyPress } placeholder={ this.props.placeholder } />
             
             { this.state.results && this.state.results.length ?
                 <div className="results">
                     { this.state.results.map((result, index) => {
                         let className = cx("result", { selected: index == this.state.selected });
-                        return <div key={ index } className={ className } onClick={ (event) => this.setValue(event, result) }>
+                        return <div key={ index } className={ className } onClick={ () => this.setValue(result) }>
                             <pre>{ result }</pre>
                         </div>;
                     }) }
