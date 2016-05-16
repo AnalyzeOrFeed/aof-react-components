@@ -29,20 +29,24 @@ module.exports = React.createClass({
         };
     },
     setValue: function(value) {
-        if (this.props.onChange) this.props.onChange(value);
         this.setState({
             results: [],
             searchTerm: value,
             selected: -1,
         });
+
         this.prevent = true;
+        
+        let event = new Event("input", { bubbles: true, cancelable: true });
+        this.refs.text.dispatchEvent(event);
     },
     handleClick: function(event) {
         if (this.prevent) {
             this.prevent = false;
             return;
         }
-        this.props.getResults(this.state.searchTerm, (results) => this.setState({ results: results }));
+
+        this.props.getResults(this.state.searchTerm, results => this.setState({ results: results }));
         this.prevent = true;
     },
     handleOutsideClick: function(event) {
@@ -52,15 +56,18 @@ module.exports = React.createClass({
         }
         this.setState({ results: [] });
     },
-    handleUpdate: function(event) {
+    handleChange: function(event) {
+        if (this.props.onChange) this.props.onChange(event);
+
+        // If prevent is true then it was a "fake" event from this.setValue, so we can exit here
+        if (this.prevent) return;
+
         this.setState({
             searchTerm: event.target.value,
             selected: -1,
         });
 
-        if (this.props.onChange) this.props.onChange(event.target.value);        
-
-        this.props.getResults(event.target.value, (results) => this.setState({ results: results }));
+        this.props.getResults(event.target.value, results => this.setState({ results: results }));
     },
     handleKeyPress: function(event) {
         if (event.keyCode === 13) {
@@ -83,7 +90,7 @@ module.exports = React.createClass({
     },
 	render: function() {
 		return <div className="component-autocomplete" onClick={ this.handleClick }>
-			<input type="text" name={ this.props.name } value={ this.state.searchTerm } onChange={ this.handleUpdate } 
+			<input ref="text" type="text" name={ this.props.name } value={ this.state.searchTerm } onChange={ this.handleChange } 
                 onKeyDown={ this.handleKeyPress } placeholder={ this.props.placeholder } />
             
             { this.state.results && this.state.results.length ?

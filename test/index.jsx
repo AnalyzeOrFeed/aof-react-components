@@ -94,6 +94,9 @@ const App = React.createClass({
 	handleWatch: function(game) {
 		console.log(game);
 	},
+	handleChange: function(event) {
+		console.log(event.target);
+	},
 	render: function() {
 		let divStyle = {
 			marginRight: "50px",
@@ -108,6 +111,7 @@ const App = React.createClass({
 					<AutoComplete
 						getResults={ this.getResults }
 						placeholder="Summoner"
+						onChange={ this.handleChange }
 					/>
 				</div>
 
