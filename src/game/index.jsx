@@ -30,6 +30,7 @@ module.exports = React.createClass({
 		}).isRequired,
 		link: React.PropTypes.string,
 		linkText: React.PropTypes.string,
+		showTotals: React.PropTypes.bool,
 		showConversions: React.PropTypes.bool,
 		conversionTimeLeft: React.PropTypes.number,
 		onWatch: React.PropTypes.func,
@@ -212,65 +213,67 @@ module.exports = React.createClass({
 			
 			<div className="separator" />
 
-			<div className="cols">
-				<div className="leftCol">
-					<div className="totalStats">
-						<div className="bans">
-							{ team1Bans.map(ban => {
-								return <ObjectImage
-									className="ban"
-									data={ ban.champion }
-									displayBy="name"
-									imageBy="image"
-									key={ ban.banNr }
-								/>
-							})}
-						</div>
+			{ this.props.showTotals !== false ? 
+				<div className="cols">
+					<div className="leftCol">
+						<div className="totalStats">
+							<div className="bans">
+								{ team1Bans.map(ban => {
+									return <ObjectImage
+										className="ban"
+										data={ ban.champion }
+										displayBy="name"
+										imageBy="image"
+										key={ ban.banNr }
+									/>
+								})}
+							</div>
 
-						<div className="winner">
-							{ this.props.game.winTeamNr === 0 ? "Winner" : null }
-						</div>
+							<div className="winner">
+								{ this.props.game.winTeamNr === 0 ? "Winner" : null }
+							</div>
 
-						<div className="score">
-							<div className="tiny">TOTAL</div>
-							{ Number.isFinite(team1Kills) ? 
-								<div>{ team1Kills } / { team1Deaths } / { team1Assists }</div>
-							:
-								<div>?</div>
-							}
+							<div className="score">
+								<div className="tiny">TOTAL</div>
+								{ Number.isFinite(team1Kills) ? 
+									<div>{ team1Kills } / { team1Deaths } / { team1Assists }</div>
+								:
+									<div>?</div>
+								}
+							</div>
+						</div>
+					</div>
+
+					<div className="rightCol">
+						<div className="totalStats">
+							<div className="bans">
+								{ team2Bans.map(ban => {
+									return <ObjectImage
+										className="ban"
+										data={ ban.champion }
+										displayBy="name"
+										imageBy="image"
+										key={ ban.banNr }
+									/>
+								})}
+							</div>
+							
+							<div className="winner">
+								{ this.props.game.winTeamNr === 1 ? "Winner" : null }
+							</div>
+
+							<div className="score">
+								<div className="tiny">TOTAL</div>
+								{ Number.isFinite(team2Kills) ? 
+									<div>{ team2Kills } / { team2Deaths } / { team2Assists }</div>
+								:
+									<div>?</div>
+								}
+							</div>
 						</div>
 					</div>
 				</div>
-
-				<div className="rightCol">
-					<div className="totalStats">
-						<div className="bans">
-							{ team2Bans.map(ban => {
-								return <ObjectImage
-									className="ban"
-									data={ ban.champion }
-									displayBy="name"
-									imageBy="image"
-									key={ ban.banNr }
-								/>
-							})}
-						</div>
-						
-						<div className="winner">
-							{ this.props.game.winTeamNr === 1 ? "Winner" : null }
-						</div>
-
-						<div className="score">
-							<div className="tiny">TOTAL</div>
-							{ Number.isFinite(team2Kills) ? 
-								<div>{ team2Kills } / { team2Deaths } / { team2Assists }</div>
-							:
-								<div>?</div>
-							}
-						</div>
-					</div>
-				</div>
-			</div>
+			: null }
 
 			<div className="separator" />
 
