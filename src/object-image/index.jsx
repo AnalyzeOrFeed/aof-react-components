@@ -32,6 +32,25 @@ module.exports = React.createClass({
     		data: nextProps.data
     	});
     },
+    shouldComponentUpdate: function(nextProps, nextState) {
+    	if (this.props.size != nextProps.size) return true;
+    	if (this.props.crop != nextProps.crop) return true;
+    	if (this.props.round != nextProps.round) return true;
+
+    	if (nextProps.data && !this.props.data) return true;
+    	if (!nextProps.data && this.props.data) return true;
+    	if (nextState.data && !this.state.data) return true;
+    	if (!nextState.data && this.state.data) return true;
+    	if (!nextProps.data && !this.props.data && !nextState.data && !this.state.data) return false;
+
+		let image = this.state.data[this.props.imageBy];
+		let newImage = nextState.data[nextProps.imageBy];
+		if (typeof image === "function") image = image.bind(this.state.data)();
+		if (typeof newImage === "function") newImage = newImage.bind(this.state.data)();
+		if (image != newImage) return true;
+
+    	return false;
+    },
     getInitialState: function() {
     	return {
     		data: this.props.data,
@@ -78,20 +97,15 @@ module.exports = React.createClass({
 		let size = 50;
 		if (this.props.size >= 0) size = this.props.size;
 		
-		let crop = 12;
-		if (this.props.crop >= 0) crop = this.props.crop;
+		let crop = "100% 100%";
+		if (this.props.crop >= 0) crop = (100 + this.props.crop) + "% " + (100 + this.props.crop) + "%";
 
 		let style = {
 			width: (size - (this.state.data ? 0 : 2)) + "px",
 			height: (size - (this.state.data ? 0 : 2)) + "px",
-			cursor: (this.props.dataset ? "pointer" : "default")
-		};
-
-		let imgStyle = {
-			top: (-crop / 2) + "px",
-			left: (-crop / 2) + "px",
-			width: (size + crop) + "px",
-			height: (size + crop) + "px",
+			cursor: (this.props.dataset ? "pointer" : "default"),
+			backgroundImage: this.state.data ? "url(" + image + ")" : null,
+			backgroundSize: crop,
 		};
 
 		let className = cx("component-object-image", {
@@ -100,12 +114,8 @@ module.exports = React.createClass({
 			round: this.props.round,
 		}, this.props.className);
 
-		return <div className={ className } ref="main">
-			<div style={ style } onClick={ this.handleClick } onMouseEnter={ this.handleMouseEnter } onMouseLeave={ this.handleMouseLeave }>
-				{ this.state.data ?
-					<img src={ image } style={ imgStyle } />
-				: null }
-			</div>
+		return <div className={ className } style={ style } ref="main" onClick={ this.handleClick } 
+				onMouseEnter={ this.handleMouseEnter } onMouseLeave={ this.handleMouseLeave }>
 		</div>;
 	}
 });

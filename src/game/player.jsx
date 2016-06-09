@@ -29,6 +29,7 @@ module.exports = React.createClass({
 						displayBy="name"
 						imageBy="image"
 						size={ 50 }
+						crop={ 10 }
 					/>
 				</div>
 
@@ -80,7 +81,6 @@ module.exports = React.createClass({
 						displayBy="name"
 						imageBy="image"
 						size={ 40 }
-						crop={ 0 }
 					/>
 				: null }
 			</div>
@@ -105,7 +105,6 @@ module.exports = React.createClass({
 							displayBy="name"
 							imageBy="image"
 							size={ 24 }
-							crop={ 2 }
 							key={ index }
 						/>;
 					}) }

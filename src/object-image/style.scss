@@ -5,48 +5,21 @@
 	overflow: hidden;
 	display: inline-block;
 
+	background-repeat: no-repeat;
+	background-position: center center;
+
 	vertical-align: middle;
 
-	img {
-		position: relative;
-	}
-
+	border-radius: $border-radius;
 	&.round {
-		border-radius: 200px;
+		border-radius: 50%;
 	}
 
 	&.populated {
-		&:not(.round) {
-			border-radius: $border-radius;
-		}
-
 		border: none;
-		opacity: 1;
 	}
 
 	&.changeable &:hover {
 		background-color: rgba($white, 0.1);
 	}
-}
-
-.object-tooltip {
-	height: 20px;
-	position: fixed;
-	padding: 5px 10px 0px;
-	z-index: 5000;
-	pointer-events: none;
-
-	background-color: $white;
-	color: $deep-purple;
-
-	text-transform: uppercase;
-	font-size: 10px;
-	letter-spacing: 0.05em;
-
-	@include drop-shadow;
-
-	opacity: 0;
-	transition: opacity 0.05s;
-
-	&.show { opacity: 1; }
 }

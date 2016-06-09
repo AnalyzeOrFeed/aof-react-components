@@ -17,7 +17,7 @@ const Tooltip         = require("../src/tooltip");
 let regions = require("./data/regions.json");
 let leagues = require("./data/leagues.json");
 
-const baseUrl = "https://ddragon.leagueoflegends.com/cdn/6.9.1/img/";
+const baseUrl = "https://ddragon.leagueoflegends.com/cdn/6.11.1/img/";
 let champions = [];
 _.each(require("./data/champions.json"), (value, key) => {
 	champions.push({
@@ -171,6 +171,7 @@ const App = React.createClass({
 						default="Champion"
 						displayBy="name"
 						imageBy="image"
+						crop={ 10 }
 					/>
 					<div style={{ display: "inline-block", width: "20px" }}></div>
 					<ObjectImage
@@ -179,6 +180,7 @@ const App = React.createClass({
 						default="Champion"
 						displayBy="name"
 						imageBy="image"
+						crop={ 10 }
 					/>
 				</div>
 

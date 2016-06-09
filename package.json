@@ -1,6 +1,6 @@
 {
   "name": "aof-react-components",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "React components used on the aof.gg website and the client.",
   "main": "index.js",
   "scripts": {

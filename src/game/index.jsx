@@ -39,6 +39,13 @@ module.exports = React.createClass({
 	componentWillMount: function() {
         require("./style.scss");
     },
+    shouldComponentUpdate: function(nextProps, nextState) {
+    	if (nextProps.game && !this.props.game) return true;
+    	if (!nextProps.game && this.props.game) return true;
+    	if (!nextProps.game && !this.props.game) return false;
+    	return nextProps.game.regionId != this.props.game.regionId || 
+    		nextProps.game.id != this.props.game.id;
+    },
     getInitialState: function() {
     	return {
             newConversionStart: 0,
@@ -145,7 +152,7 @@ module.exports = React.createClass({
 			<div className="header">
 				<div className="date">
 					{ this.props.game.startTime > 0 ?
-						moment(this.props.game.startTime).format("LLL")
+						moment(this.props.game.startTime).format("lll")
 					: null }
 				</div>
 
@@ -217,7 +224,7 @@ module.exports = React.createClass({
 				<div className="cols">
 					<div className="leftCol">
 						<div className="totalStats">
-							<div className="bans">
+							<div>
 								{ team1Bans.map(ban => {
 									return <ObjectImage
 										className="ban"
@@ -225,6 +232,8 @@ module.exports = React.createClass({
 										displayBy="name"
 										imageBy="image"
 										key={ ban.banNr }
+										size={ 50 }
+										crop={ 10 }
 									/>
 								})}
 							</div>
@@ -254,6 +263,8 @@ module.exports = React.createClass({
 										displayBy="name"
 										imageBy="image"
 										key={ ban.banNr }
+										size={ 50 }
+										crop={ 10 }
 									/>
 								})}
 							</div>
