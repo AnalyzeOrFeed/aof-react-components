@@ -22,7 +22,7 @@ const modules = {
 };
 
 // Add local modules as external modules for one-another
-deps = deps.concat(_.map(_.keys(modules), item => new RegExp("\/" + item)));
+deps = deps.concat(_.map(_.keys(modules), item => new RegExp("^\\..*\\/" + item)));
 
 // Add main index file to webpack entries, but not to external modules,
 // otherwise webpack matches every dependency as external
@@ -64,7 +64,11 @@ _.each(modules, (entry, name) => {
             ]
         },
         resolve: {
-            extensions: ["", ".js", ".jsx"]
+            extensions: ["", ".js", ".jsx"],
+			alias: {
+				"assets": path.resolve(__dirname, "../src/_assets"),
+				"propTypes": path.resolve(__dirname, "../src/_propTypes"),
+			}
         },
         externals: deps,
     }).run((err, stats) => {

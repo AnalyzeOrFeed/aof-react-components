@@ -6,13 +6,13 @@ const cx     = require("classnames");
 const Button = require("../button");
 const ObjectImage = require("../object-image");
 
-const PropTypes = require("../game/propTypes");
+const PropGame = require("propTypes/game");
 
 if (navigator && navigator.language) moment.locale(navigator.language);
 
 module.exports = React.createClass({
 	propTypes: {
-		game: PropTypes.game.isRequired,
+		game: PropGame.isRequired,
 		player: React.PropTypes.oneOfType([
 			React.PropTypes.number,
 			React.PropTypes.string,
@@ -111,14 +111,14 @@ module.exports = React.createClass({
 					<div className="bottom">
 						<div>
 							{ Number.isFinite(player.goldEarned) ? [
-								<img src={ require("../game/assets/coins.png") } key="image" />,
+								<img src={ require("assets/coins.png") } key="image" />,
 								<span key="text">{ goldEarned }</span>
 							] : null }
 						</div> 
 						
 						<div>
 							{ Number.isFinite(player.minionsKilled) ? [
-								<img src={ require("../game/assets/minions.png") } key="image" />,
+								<img src={ require("assets/minions.png") } key="image" />,
 								<span key="text">{ player.minionsKilled }</span>
 							] : null }
 						</div>
@@ -146,20 +146,20 @@ module.exports = React.createClass({
 					<div className="bottom">
 						{ this.props.game.region ? 
 							<div className="info">
-								<img src={ require("../game/assets/globe.svg") } />
+								<img src={ require("assets/globe.svg") } />
 								<div className="label">{ this.props.game.region }</div>
 							</div>
 						: null }
 
 						{ this.props.game.type ? 
 							<div className="info">
-								<img src={ require("../game/assets/controller.svg") } />
+								<img src={ require("assets/controller.svg") } />
 								<div className="label">{ this.props.game.type }</div>
 							</div>
 						: null }
 						{ this.props.game.version ? 
 							<div className="info">
-								<img src={ require("../game/assets/disc.svg") } />
+								<img src={ require("assets/disc.svg") } />
 								<div className="label">{ this.props.game.version }</div>
 							</div>
 						: null }

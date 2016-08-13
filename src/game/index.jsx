@@ -5,7 +5,7 @@ const _      = require("lodash");
 const Button = require("../button");
 const ObjectImage = require("../object-image");
 
-const PropTypes = require("./propTypes");
+const PropGame = require("propTypes/game");
 const Player = require("./player");
 const Conversion = require("./conversion");
 
@@ -13,7 +13,7 @@ if (navigator && navigator.language) moment.locale(navigator.language);
 
 module.exports = React.createClass({
 	propTypes: {
-		game: PropTypes.game.isRequired,
+		game: PropGame.isRequired,
 		link: React.PropTypes.string,
 		linkText: React.PropTypes.string,
 		showTotals: React.PropTypes.bool,
@@ -145,25 +145,25 @@ module.exports = React.createClass({
 				<div className="info">
 					{ this.props.game.region ? 
 						<div>
-							<img src={ require("./assets/globe.svg") } />
+							<img src={ require("assets/globe.svg") } />
 							<div className="label">{ this.props.game.region }</div>
 						</div>
 					: null }
 					{ this.props.game.type ? 
 						<div>
-							<img src={ require("./assets/controller.svg") } />
+							<img src={ require("assets/controller.svg") } />
 							<div className="label">{ this.props.game.type }</div>
 						</div>
 					: null }
 					{ this.props.game.version ? 
 						<div>
-							<img src={ require("./assets/disc.svg") } />
+							<img src={ require("assets/disc.svg") } />
 							<div className="label">{ this.props.game.version }</div>
 						</div>
 					: null }
 					{ secs !== null ? 
 						<div>
-							<img src={ require("./assets/stopwatch.svg") } />
+							<img src={ require("assets/stopwatch.svg") } />
 							<div className="label">{ mins + ":" + secs }</div>
 						</div>
 					: null }

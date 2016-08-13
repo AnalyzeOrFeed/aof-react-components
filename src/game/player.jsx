@@ -3,11 +3,11 @@ const cx = require("classnames");
 
 const ObjectImage = require("../object-image");
 
-const PropTypes = require("./propTypes");
+const PropPlayer = require("propTypes/player");
 
 module.exports = React.createClass({
 	propTypes: {
-		player: PropTypes.player.isRequired
+		player: PropPlayer.isRequired
 	},
 	render: function() {
 		let goldEarned = this.props.player.goldEarned;
@@ -60,14 +60,14 @@ module.exports = React.createClass({
 				<div className="stats">
 					<div>
 						{ Number.isFinite(this.props.player.goldEarned) ? [
-							<img src={ require("./assets/coins.png") } key="image" />,
+							<img src={ require("assets/coins.png") } key="image" />,
 							<span key="text">{ goldEarned }</span>
 						] : null }
 					</div> 
 					
 					<div>
 						{ Number.isFinite(this.props.player.minionsKilled) ? [
-							<img src={ require("./assets/minions.png") } key="image" />,
+							<img src={ require("assets/minions.png") } key="image" />,
 							<span key="text">{ this.props.player.minionsKilled }</span>
 						] : null }
 					</div>

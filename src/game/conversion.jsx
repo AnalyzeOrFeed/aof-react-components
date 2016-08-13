@@ -1,10 +1,10 @@
 const React = require("react");
 
-const propTypes = require("./propTypes");
+const PropConversion = require("propTypes/conversion");
 
 module.exports = React.createClass({
     propTypes: {
-        conversion: propTypes.conversion.isRequired,
+        conversion: PropConversion.isRequired,
     },
     getInitialState: function() {
         return {};
