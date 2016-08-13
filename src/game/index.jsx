@@ -13,21 +13,7 @@ if (navigator && navigator.language) moment.locale(navigator.language);
 
 module.exports = React.createClass({
 	propTypes: {
-		game: React.PropTypes.shape({
-			region: React.PropTypes.string,
-			type: React.PropTypes.string,
-			version: React.PropTypes.string,
-			duration: React.PropTypes.number,
-			winTeamNr: React.PropTypes.number,
-			hasEndgameStats: React.PropTypes.bool,
-			players: React.PropTypes.arrayOf(PropTypes.player),
-			bans: React.PropTypes.arrayOf(React.PropTypes.shape({
-				banNr: React.PropTypes.number.isRequired,
-				teamNr: React.PropTypes.number.isRequired,
-				champion: PropTypes.object,
-			})),
-			conversions: React.PropTypes.arrayOf(PropTypes.conversion),
-		}).isRequired,
+		game: PropTypes.game.isRequired,
 		link: React.PropTypes.string,
 		linkText: React.PropTypes.string,
 		showTotals: React.PropTypes.bool,

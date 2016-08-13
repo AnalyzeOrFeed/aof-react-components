@@ -7,6 +7,7 @@ const AutoComplete    = require("../src/autocomplete");
 const Button          = require("../src/button");
 const ButtonImage     = require("../src/button-image");
 const Game            = require("../src/game");
+const GameResult      = require("../src/game-result");
 const Modal           = require("../src/modal");
 const ObjectImage     = require("../src/object-image");
 const RegionSelect    = require("../src/region-select");
@@ -187,6 +188,20 @@ const App = React.createClass({
 				<div style={ divStyle }>
 					<h2>Spinner</h2>
 					<Spinner />
+				</div>
+
+				<div style={ divStyle }>
+					<h2>Game Result</h2>
+					<GameResult
+						game={ game }
+						onWatch={ this.handleWatch }
+						player="YellowTail"
+					/>
+					<GameResult
+						game={ game }
+						onWatch={ this.handleWatch }
+						player="LovingJun"
+					/>
 				</div>
 
 				<div style={ divStyle }>
