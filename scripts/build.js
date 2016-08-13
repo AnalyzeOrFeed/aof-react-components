@@ -12,6 +12,7 @@ const modules = {
     "button": path.resolve(__dirname, "../src/button/"),
     "button-image": path.resolve(__dirname, "../src/button-image/"),
     "game": path.resolve(__dirname, "../src/game/"),
+    "game-result": path.resolve(__dirname, "../src/game-result/"),
     "modal": path.resolve(__dirname, "../src/modal/"),
     "object-image": path.resolve(__dirname, "../src/object-image/"),
     "region-select": path.resolve(__dirname, "../src/region-select"),
