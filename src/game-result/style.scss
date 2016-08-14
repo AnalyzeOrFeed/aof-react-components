@@ -27,7 +27,7 @@
 }
 
 .component-game-resultPlayer {
-	min-width: 460px;
+	min-width: 480px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -50,56 +50,46 @@
 	}
 
 	.splitBlock {
+		flex: 2;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
-		margin: 0 1.5em;
-		height: 90%;
+		justify-content: space-around;
+		margin-left: 1em;
+		height: 100%;
 
-		.top {
+		.top, .bottom {
+			display: flex;
+			flex-direction: row;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
-		}
 
-		.bottom {
-			display: flex;
-			flex-direction: row;
-			font-size: 0.8em;
-			white-space: nowrap;
-			> div:first-child {
-				margin-right: 1em;
+			&.small {
+				font-size: 0.8em;
 			}
 		}
 
-		img {
-			vertical-align: middle;
-			margin-right: 0.2em;
-		}
+		.info {
+	        display: flex;
+
+	        img {
+	            width: 1em;
+	            height: 1em;
+	        }
+	    
+	        .label {
+	            line-height: 2em;
+	            margin: 0 0.5em;
+	            text-transform: uppercase;
+	            font-size: 0.7em;
+	            letter-spacing: 0.1em;
+	        }
+	    }
 	}
 
 	.leagueBlock {
 		flex: 1;
 		background: transparent;
-	}
-
-	.info {
-		display: flex;
-		flex-wrap: wrap;
-		margin-right: 1em;
-
-		img {
-			width: 1.5em;
-			height: 1.5em;
-		}
-	
-		.label {
-			line-height: 2em;
-			margin: 0 0.5em;
-			text-transform: uppercase;
-			font-size: 0.7em;
-			letter-spacing: 0.1em;
-		}
 	}
 
 	.component-button {

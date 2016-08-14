@@ -108,20 +108,35 @@ module.exports = React.createClass({
 					<div className="top">
 						{ player.name }
 					</div>
+					<div className="bottom small">
+						{ this.props.game.startTime > 0 ?
+							moment(this.props.game.startTime).format("lll")
+						: null }
+					</div>
+				</div>
+
+				<div className="splitBlock">
+					<div className="top small">
+						 { this.props.game.region ? 
+                            <div className="info">
+                                <img src={ require("assets/globe.svg") } />
+                                <div className="label">{ this.props.game.region }</div>
+                            </div>
+                        : null }
+                        { this.props.game.version ? 
+                            <div className="info">
+                                <img src={ require("assets/disc.svg") } />
+                                <div className="label">{ this.props.game.version }</div>
+                            </div>
+                        : null }
+					</div>
 					<div className="bottom">
-						<div>
-							{ Number.isFinite(player.goldEarned) ? [
-								<img src={ require("assets/coins.png") } key="image" />,
-								<span key="text">{ goldEarned }</span>
-							] : null }
-						</div> 
-						
-						<div>
-							{ Number.isFinite(player.minionsKilled) ? [
-								<img src={ require("assets/minions.png") } key="image" />,
-								<span key="text">{ player.minionsKilled }</span>
-							] : null }
-						</div>
+						{ this.props.game.type ? 
+                            <div className="info">
+                                <img src={ require("assets/controller.svg") } />
+                                <div className="label">{ this.props.game.type }</div>
+                            </div>
+                        : null }
 					</div>
 				</div>
 
@@ -134,36 +149,6 @@ module.exports = React.createClass({
 							size={ 40 }
 						/>
 					: null }
-				</div>
-
-				<div className="splitBlock">
-					<div className="top">
-						{ this.props.game.startTime > 0 ?
-							moment(this.props.game.startTime).format("lll")
-						: null }
-					</div>
-
-					<div className="bottom">
-						{ this.props.game.region ? 
-							<div className="info">
-								<img src={ require("assets/globe.svg") } />
-								<div className="label">{ this.props.game.region }</div>
-							</div>
-						: null }
-
-						{ this.props.game.type ? 
-							<div className="info">
-								<img src={ require("assets/controller.svg") } />
-								<div className="label">{ this.props.game.type }</div>
-							</div>
-						: null }
-						{ this.props.game.version ? 
-							<div className="info">
-								<img src={ require("assets/disc.svg") } />
-								<div className="label">{ this.props.game.version }</div>
-							</div>
-						: null }
-					</div>
 				</div>
 
 				{ this.props.link ? 
