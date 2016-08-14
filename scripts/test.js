@@ -37,7 +37,11 @@ webpack({
         ]
     },
     resolve: {
-        extensions: ["", ".js", ".jsx"]
+        extensions: ["", ".js", ".jsx"],
+		alias: {
+			"assets": path.resolve(__dirname, "../src/_assets"),
+			"propTypes": path.resolve(__dirname, "../src/_propTypes"),
+		}
     }
 }).watch({ aggregateTimeout: 300 }, (err, stats) => {
     if (err || stats.hasErrors() || stats.hasWarnings()) {
